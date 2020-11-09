@@ -1,0 +1,14 @@
+server:
+  port:8095
+spring:
+  application:
+    name: quiz-composite
+---
+spring:
+  profiles: dev
+  cloud:
+    consul:
+      host: consul
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${server.port}:${random.value}
